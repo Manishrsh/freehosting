@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Github, Twitter, Linkedin, X } from "lucide-react";
 
 interface FormData {
   githubUrl: string;
   siteName: string;
 }
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ onGetExited }: { onGetExited: () => void }) => {
   const [formData, setFormData] = useState<FormData>({
-    githubUrl: '',
-    siteName: '',
+    githubUrl: "",
+    siteName: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,10 +29,24 @@ const RegistrationForm = () => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
       <div className="bg-zinc-900 p-8 rounded-xl max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">Complete Registration</h2>
+        <div className="relative">
+          <X
+            size={24}
+            onClick={onGetExited}
+            className="absolute right-4 cursor-pointer text-gray-300 hover:text-gray-500"
+          />
+        </div>
+
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Complete Registration
+        </h2>
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="githubUrl" className="block text-sm font-medium text-gray-300 mb-2">
+            <label
+              htmlFor="githubUrl"
+              className="block text-sm font-medium text-gray-300 mb-2"
+            >
               GitHub URL
             </label>
             <input
@@ -46,7 +61,10 @@ const RegistrationForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="siteName" className="block text-sm font-medium text-gray-300 mb-2">
+            <label
+              htmlFor="siteName"
+              className="block text-sm font-medium text-gray-300 mb-2"
+            >
               Site Name (Subdomain)
             </label>
             <input

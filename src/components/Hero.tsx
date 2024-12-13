@@ -23,6 +23,8 @@ const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
         >
           Get Started
         </button>
+       
+
       </div>
     </div>
   );
